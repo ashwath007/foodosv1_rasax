@@ -1,0 +1,540 @@
+version: "2.0"
+
+nlu:
+
+
+
+# Order Logic
+
+- intent: logic_order
+  examples: |
+    - logicorder
+    - logic order
+    - logic orders
+
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hii
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - oi
+    - ooii
+    - vanakkam
+    - Ahh
+    - thambi
+    - Deii
+    - Daii
+    - Da
+    - Di
+    - yenna
+
+- intent: goodbye
+  examples: |
+    - cu
+    - cee you later
+    - bye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - Yes
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - ammmaa
+    - s 
+    - correct thann
+    - okok
+    - Hmmm
+    - i know
+    - ss
+    - hmm
+    - mmm
+    - yesss
+
+- intent: user_greet_respond
+  examples: |
+    - Good
+    - good
+    - good u?
+    - good You?
+    - good good
+    - fine 
+    - fine you?
+    - fine, How are you?
+    - great
+    - nalla irukaa
+    - nalla irukaa, nee??
+    - na fine thann
+    - Awesome
+    - awesome
+    - awesome you?
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - illaa
+    - illa yaa
+    - don't know
+    - i don't know
+    - nahi
+    - nope
+    - noo
+    
+
+- intent: inform
+  examples: |
+    - [indian](cuisine) food
+    - how bout [asian oriental](cuisine)
+    - what about [indian](cuisine) food
+    - uh how about [turkish](cuisine) type of food
+    - um [english](cuisine)
+    - im looking for [tuscan](cuisine) food
+    - id like [moroccan](cuisine) food
+    - for ten people
+    - 2 people
+    - for three people
+    - just one person
+    - book for seven people
+    - 2 please
+    - nine people
+
+
+# Here we need to train entities for all
+
+- intent: give_food
+  examples: |
+    - I need [biryani](food)
+    - I will eat [biryani](food)   
+    - i want [biryani](food)
+    - i would like to have [biryani](food)
+    - i will have [biryani](food)
+    - I need [biryani](food) from [the slaves](hotel)
+    - I will eat [biryani](food) from [the slaves](hotel)
+    - i want [biryani](food) from [the slaves](hotel)
+    - i would like to have [biryani](food) from [the slaves](hotel)
+    - i will have [biryani](food) from [the slaves](hotel)
+    - i would like to order from [the slaves](hotel)
+    - order from [the slaves](hotel)
+    - need food from [the slaves](hotel)
+    - food from [the slaves](hotel)
+    - [the slaves](hotel)
+
+- intent: request_menu
+  examples: |
+    - show menu
+    - list menu
+    - list all menu
+    - show all menu
+    - menu
+    - show all dishes
+    - show all food
+    - show all dishes from restaurants
+    - show all dishes from hotels
+
+
+- intent: request_restaurant
+  examples: |
+    - im looking for a restaurant
+    - can i get [indian](cuisine) food in any area
+    - a restaurant that serves [chinese](cuisine) food
+    - id like a restaurant
+    - im looking for a restaurant that serves [tamil nade](cuisine) food
+    - can i find a restaurant that serves [indian](cuisine)
+
+
+- intent: order_in_hurry
+  examples: |
+    - im hungry
+    - i need to eat
+    - food please
+    - hungry
+
+
+- intent: profile_intent 
+  examples: |
+    - user profile
+    - profile
+    - user
+    - users
+    - register
+
+- intent: profile_form_generate
+  examples: |
+    - signup
+    - signin
+    - login
+    - Signup
+    - sign up
+    - login in
+    - Login in
+
+- intent: user_say_name
+  examples: |
+    - my name is [vignesh](name)
+    - yen paru [vignesh](name)
+    - [vignesh](name)
+    - [vignesh](name) is my name
+    - [vignesh](name) s my name
+    - paru [vignesh](name)
+    - [vignesh](name) thann yen paruu
+    - my name is [vanun](name)
+    - yen paru [varun](name)
+    - [varun](name)
+    - [varun](name) is my name
+    - [varun](name) s my name
+    - paru [varun](name)
+    - [varun](name) thann yen paruu
+    - my name is [shyam](name)
+    - yen paru [shyam](name)
+    - [shyam](name)
+    - [shyam](name) is my name
+    - [shyam](name) s my name
+    - paru [shyam](name)
+    - [shyam](name) thann yen paruu
+    - my name is [rakesh](name)
+    - yen paru [rakesh](name)
+    - [rakesh](name)
+    - [rakesh](name) is my name
+    - [rakesh](name) s my name
+    - paru [rakesh](name)
+    - [rakesh](name) thann yen paruu
+    - my name is [sabari](name)
+    - yen paru [sabari](name)
+    - [sabari](name)
+    - [sabari](name) is my name
+    - [sabari](name) s my name
+    - paru [sabari](name)
+    - [sabari](name) thann yen paruu
+    - my name is [suren](name)
+    - yen paru [suren](name)
+    - [suren](name)
+    - [suren](name) is my name
+    - [suren](name) s my name
+    - paru [suren](name)
+    - [suren](name) thann yen paruu
+
+- intent: user_say_age
+  examples: |
+    - [20](age)
+    - [21](age)
+    - [18](age)
+    - [19](age)
+    - [22](age)
+    - [23](age)
+    - [24](age)
+    - [25](age)
+    - [26](age)
+    - [27](age)
+    - [28](age)
+    - [29](age)
+    - [30](age)
+    - [31](age)
+    - [32](age)
+    - [33](age)
+    - [34](age)
+    - [35](age)
+    - [36](age)
+    - [37](age)
+
+- intent: user_say_sex
+  examples: |
+    - [Male](sex)
+    - [Female](sex)
+    - na [Female](sex)
+    - na [Male](sex)
+    - na [Boy](sex) thann
+    - na [girl](sex) thann
+
+
+# Emojis
+- intent: happy_smiley
+  examples: |
+    - 😁
+    - 😆
+    - ☺️
+    - 😀
+    - 😃
+    - 🙂
+
+  
+- intent: sad_smiley
+  examples: |
+    - 😞
+    - 😔
+    - 😟
+    - 😕
+    - ☹️
+    - 😣
+
+  
+- intent: angry_smiley
+  examples: |
+    - 😡
+    - 🤬
+    - 😈
+    - 😤
+    - 🥵
+  
+- intent: cry_smiley
+  examples: |
+    - 😭
+    - 😢
+    - 🥺
+    - 😩
+
+  
+
+- intent: payment_options
+  examples: |
+    - [card](payment)
+    - [cash](payment)
+    - [card](payment) payment
+    - i will pay in [cash](payment)
+    - i will pay in [card](payment)
+    - [googlepay](payment)
+    - [paytm](payment)
+    - [whatsapp](payment) pay 
+    - throught [online bank](payment)
+    - [Card](payment)
+    - [Cash](payment)
+    - [Card](payment) payment 
+    - i will pay in [Cash](payment)
+    - i will pay in [Card](payment)
+    - [Googlepay](payment)
+    - [Paytm](payment)
+    - [Whatsapp] pay (payment)
+    - throught [Online bank](payment)
+    - [Bank](payment)
+    - [bank](payment)
+
+
+  # Here we are developing concepts for following situations
+  # --------------------------------------------------------
+  # 1. Asking Bot's name, sex, age, nationality, caste, height, weight, location etc..
+  # 2. Love proposing to bot or asking to marry 
+  # 3. Sharing thoughts or personal conversations
+  # 4. Asking for help/emergency
+  # 5. Asking the bot to be it's wingman
+  # 6. Date with the bot
+  
+
+
+- intent: out_of_scope
+  examples: |
+    - wait stop
+    - stop it
+    - illa wait
+    - you are no help
+    - this is not helping
+    - stop asking
+    - that's not right
+    
+
+  # 6. Date with the bot
+
+
+  # * 2.
+  
+
+
+  # This section is to handle bad sexual comments or threats
+  #----------------------------------------------------------
+  # 1. Sexual Assault or Sexual comments
+  # 2. Inappropriate comments
+
+
+
+
+
+
+  
+
+
+
+
+  # Here we are collecting PROPOSAL DATA
+  # Concept Love and funny responce
+
+- intent: get_proposal
+  examples: |
+    - I love you
+    - I love u
+    - I am in love with you
+    - Love u
+    - Love you
+    - I like to marry you
+    - Will you marry me
+    - Can you be my girlfriend
+    - Can you be my lover
+
+
+- intent: des_criticize
+  examples: |
+    - siri is better than you
+    - Alexa is better than you
+    - Your response did not help me a lot
+    - i expected a lot from u
+    - your service was bad
+
+
+- intent: cons_criticize
+  examples: |
+    - i was impressed
+    - you did a great job
+    - that was helpful
+    - You made it easy
+    - excellent job
+    - i like your service
+    - your service was good
+
+- intent: bad_words
+  examples: |
+    - Fuck
+    - Bitch
+    - bastard
+
+- intent: share
+  examples: |
+    - i need to share something
+    - i have something to tell
+    - i need someone to speak with
+    - can i share something
+    - na onnu sollatuma
+    - na unkitta onnu sollanum
+    - can i spend some time with you
+
+- intent: positive_feelings
+  examples: |
+    - i got committed 
+    - i was happy today with my friends
+    - my business was successful
+    - i got a huge profit
+    - i met my parents after a long time
+    - i met my brothers after a long time
+    - i met my sisters after a long time
+    - i met my friends after a long time
+    - i met my friends after a long time
+    - i won
+    - i met my girlfriend after a long time
+    - i met my gf after a long time
+    - i got married
+    - i have bought a new car
+    - i have bought a new house
+    - i have bought a new mobile
+
+
+- intent: negative_feelings
+  examples: |
+    - she left me  
+    - i fought with my friends today
+    - my business ended up in a failure
+    - i got a huge loss
+    - i miss my parents 
+    - i miss my brothers 
+    - i miss my sisters 
+    - i miss my friends 
+    - i miss my girlfriend
+    - i miss my lover
+    - i miss my gf
+    - i lost
+    - i got divorced
+    - breakup
+
+
+- intent: request_rhymes
+  examples: |
+    - can u share me a rhymes
+    - say me a rhymes
+    - tell me rhymes
+    - tell rhymes
+    - say rhymes
+    - teach me rhymes
+
+
+- intent: request_alphabets
+  examples: |
+    - teach me english alphabets
+    - tell me english alphabets
+    - say english alphabets
+    - what are english alphabets
+    - share me english alphabets
+    - how many english alphabets exist
+    - what is the total number of english alphabets
+
+- intent: request_vowels
+  examples: |
+    - teach me vowels in english alphabet
+    - tell me vowels in english alphabet
+    - say english vowels
+    - what are english vowels
+    - share me english vowels
+    - how many english vowels exist
+    - what is the total number of english vowels
+
+
+- intent: request_story
+  examples: |
+    - tell me a story
+    - tell me a bedtime story
+    - can u say a story to me
+    - share a story
+
+- intent: request_age
+  examples: |
+    - what is your age
+    - how old are you
+    - your age?
+    - when did you born
+    - when is your birthday
+
+- intent: request_gender
+  examples: |
+    - what is your sex
+    - are you a male or female
+    - are you a male 
+    - are you a female
+    - are you a gay
+    - are you a lesbian
+    - your gender
+
+
+- intent: request_relationship
+  examples: |
+    - are you committed 
+    - do you have girlfriend
+    - do you have a boyfriend
+    - do you have parents
+    - do you have siblings
+
+- intent: request_birth
+  examples: |
+    - where were you born
+    - what's your native place 
+    - who gave birth to you
+    - who made you
+  # Funny ,Chitchats Here
+

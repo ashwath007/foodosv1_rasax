@@ -1,0 +1,136 @@
+version: "2.0"
+
+rules:
+
+# - rule: Say goodbye anytime the user says goodbye
+#   steps:
+#   - intent: goodbye
+#   - action: utter_goodbye
+
+- rule: activate user profile form 1
+  steps:
+    - intent: profile_form_generate
+    - action: user_profile_form
+    - active_loop: user_profile_form
+
+- rule: activate user profile form 2
+  steps:
+    - intent: affirm
+    - slot_was_set:
+      - is_new_user: false
+    - action: utter_new_user_mdg
+    - action: user_profile_form
+    - active_loop: user_profile_form
+
+
+
+  
+- rule: see user exist if yes trigger user form
+  steps:
+    - intent: profile_intent
+    - action: action_already_user
+
+
+- rule: submit user profile form
+  condition:
+    - active_loop: user_profile_form
+  steps:
+    - action: user_profile_form
+    - active_loop: null
+    - slot_was_set:
+      - requested_slot: null
+    - action: action_user_profile_form
+    - action: utter_user_profile_value
+    - action: action_getfood
+# here place food 
+
+- rule: activate restaurant form
+  steps:
+    - intent: request_restaurant   # intent that triggers form activation
+    - action: restaurant_form      # run the form
+    - active_loop: restaurant_form # this form is active
+
+- rule: submit restaurant form
+  condition:
+  - active_loop: restaurant_form   # this form must be active
+  steps:
+    - action: restaurant_form      # run the form
+    - active_loop: null            # the form is no longer active because it has been filled
+    - action: utter_submit         # action to take after the form is complete
+    - action: utter_slots_values 
+
+# - rule: Say 'I am a bot' anytime the user challenges
+#   steps:
+#   - intent: bot_challenge
+#   - action: utter_iamabot
+
+- rule: Greet when user say good mn
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+
+  # Here we are developing concepts for following situations
+  # --------------------------------------------------------
+  # 1. Asking Bot's name, sex, age, nationality, caste, height, weight, location etc..
+  # 2. Love proposing to bot or asking to marry 
+  # 3. Sharing thoughts or personal conversations
+  # 4. Asking for help/emergency
+  # 5. Asking the bot to be it's wingman
+  # 6. Date with the bot
+
+
+  # * 1. 
+
+- rule: Tell about you when asked about you
+  steps:
+  - intent: asking_about_bot
+  - action: utter_tell_about_bot
+
+
+- rule: Respond to proposal
+  steps:
+  - intent: get_proposal
+  - action: utter_proposal_respond
+
+
+- rule: Handling negative words
+  steps:
+    - intent: bad_words
+    - action: utter_bWords
+
+- rule: Handling destructive criticism
+  steps:
+    - intent: des_criticize
+    - action: utter_des_criticize
+
+- rule: Handling constructive criticism
+  steps:
+    - intent: cons_criticize
+    - action: utter_cons_criticize
+
+
+  # Emoji reaction here
+
+- rule: Respond to happy emoji
+  steps:
+  - intent: happy_smiley
+  - action: utter_happy_emoji
+
+  
+
+- rule: Respond to sad emoji
+  steps:
+  - intent: sad_smiley
+  - action: utter_sad_emoji
+    
+
+# - rule: Respond to cry emoji
+#   steps:
+#   - intent: cry_smiley
+#   - action: utter_cry_emoji
+#   - intent: affirm
+#   - action: utter_say_sorry
+
+
+

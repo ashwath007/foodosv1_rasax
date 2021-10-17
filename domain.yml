@@ -1,0 +1,352 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - give_time
+  - give_food
+  - get_proposal
+  - asking_about_bot
+  - request_restaurant
+  - inform
+  - user_say_name
+  - user_say_age
+  - user_say_sex
+  - out_of_scope
+  - profile_intent
+  - request_menu
+  - user_greet_respond
+  - logic_order
+  - profile_form_generate
+  - action_payment_options
+  - payment_options
+  - angry_smiley
+  - sad_smiley
+  - happy_smiley
+  - cry_smiley
+  - des_criticize
+  - cons_criticize
+  - bad_words
+  - share
+  - negative_feelings
+  - positive_feelings
+  - request_rhymes
+  - request_alphabets
+  - request_vowels
+  - request_story
+  - request_age
+  - request_gender
+  - request_relationship
+  - request_birth
+
+actions:
+  - action_show_time
+  - action_getfood
+  - action_user_profile_form
+  - action_already_user
+  - action_show_menu
+  - action_quick_show_menu
+  - show_order_in_chat
+  - action_payment_options
+  - action_about_foodos
+
+
+entities:
+  - food
+  - cuisine
+  - name
+  - age
+  - sex
+  - hotel
+  - payment
+
+
+slots:
+  is_new_user:
+    type: bool
+    influence_conversation: true
+  user_name:
+    type: text
+    influence_conversation: false
+  user_age:
+    type: text
+    influence_conversation: false
+  user_sex:
+    type: text
+    influence_conversation: false
+  cuisine:
+    type: text
+    auto_fill: false
+    influence_conversation: false
+  num_people:
+    type: float
+    auto_fill: false
+    influence_conversation: false
+  outdoor_seating:
+    type: text
+    auto_fill: false
+    influence_conversation: false
+
+
+forms:
+  user_profile_form:
+    required_slots:
+        user_name: 
+          - type: from_entity
+            entity: name
+        user_age: 
+          - type: from_entity
+            entity: age
+        user_sex: 
+          - type: from_entity
+            entity: sex
+
+  restaurant_form:
+    required_slots:
+        cuisine:
+          - type: from_entity
+            entity: cuisine
+        num_people:
+          - type: from_entity
+            entity: number
+        outdoor_seating:
+          - type: from_intent
+            intent: affirm
+            value: true
+          - type: from_intent
+            intent: deny
+            value: false
+
+
+responses:
+
+  utter_greet:
+  - text: "Hey! How are you?"
+  - text: "Hi, Yapadii irukaa??"
+  - text: "Hii, How are you??"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_tell_about_bot:
+  - text: "I am Mia, your service bot, I am here to help u, food delivery na panuvannn"
+  - text: "I am Mia, your service bot, na food delivery fast ah panuvannn"
+  - text: "Naa Mia, Na oru service bot, so food delivery, grocery delivery panuvann"
+  - text: "Naa Mia, Na oru service bot, neengaa yenna vanunalumm kekalamm, yenna vanummm??"
+  # Habling Proposals responce
+  utter_proposal_respond:
+  - text: "I already have a boyfriend"
+  - text: "I don't like you"
+  - text: "Namakuu set agathuuu, sry"
+  - text: "Let us see"
+
+  utter_ask_cuisine:
+  - text: "What cuisine?"
+  utter_ask_num_people:
+  - text: "How many people?"
+  utter_ask_outdoor_seating:
+  - text: "Do you want to sit outside?"
+
+  utter_submit:
+  - text: "All done!"
+  utter_slots_values:
+  - text: "I am going to run a restaurant search using the following parameters:\n
+            - cuisine: {cuisine}\n
+            - num_people: {num_people}\n
+            - outdoor_seating: {outdoor_seating}"
+  
+  utter_say_why_you_need_it:
+  - text: "I need you name, age, gender and location to complete your order and profile can you give this information
+  "
+  utter_user_didnt_give_info:
+  - text: "As you are not giving the information, you order will be holded, If you want to resume it say 'yes'"
+  utter_ask_user_name:
+  - text: "What is your name?"
+  - text: "What is ur name?"
+  - text: "Wts is ur name?"
+  - text: "Ungaa per yennaa?"
+  - text: "Un peru soluu??"
+  - text: "Name yennaa???"
+  - text: "Ur name?? "
+
+  utter_ask_user_sex:
+  - text: "What is your sex?"
+  - text: "What is your gender?"
+  - text: "Un sex yennaa ????"
+  - text: "Un sex yennaa? athavathuu gender yennaaa???"
+  
+  utter_ask_user_age:
+  - text: "Wat s ur age?"
+  - text: "What is your age?"
+  - text: "Ungaa age solungaa???"
+  - text: "Age solungaa???"
+
+  utter_ask_user_location:
+  - text: "I need you location, WhatsApp location share panumgaaa, press attachment symbol and location share panungaaa"
+  - text: "WhatsApp location share panumgaaa, press attachment symbol and location share panungaaa"
+  - text: "WhatsApp location share panumgaaa, press attachment symbol and location share panungaaa, yapidinuu therilinaa friend kitaa keluu"
+
+  utter_no_worries:
+  - text: "Seri vigungaa, But na yapadii order complete pandrathuuu??"
+  - text: "Please continue panuuu pa .... "
+  - text: "Food vandamaaa????"
+  - text: "Details kudukanaa order conform agathuuu"
+
+  utter_ask_continue:
+  - text: "To complete your order, Please answer"
+
+  utter_user_profile_value:
+  - text: "Thanks for completing the user profile \n
+           - Your name: {user_name}\n
+           - Your age: {user_age}\n
+           - Your gender: {user_sex}\n 
+           We will proceed your order, Can you share your location please"
+  
+  utter_order_in_a_hurry:
+  - text: "Are you in a hurry!!! Oh, Wait we will order fast ... "
+  - text: "Are you in a hurry ??"
+
+  utter_what_you_need:
+  - text: "What you want to eat??"
+  - text: "What you want? Shall we order briyani or what??"
+
+  utter_affirm_greet:
+  - text: "HHmm,😆 iam fine too, You know who i am?"
+  - text: "I am good too.😆 You know who i am?"
+  - text: "I am great too,😆 You know who i am?"
+  - text: "here, i am fine too,😀 U know who i am ??"
+
+  utter_what_you_can_help_with_order:
+  # - text: "Hmm, seri if you need food🍽️ or grocery, just let me know, ok🧑‍🍳"
+  - text: "okok, so briyani venumaa, illa roti, naan with butter gravy ?? any plan, offer iruku pa"
+  - text: "briyani sudaa🔥 iruku, u want ???, illa 🍗 grill?? 🍖"
+  - text: "Slaves la order panlamma ??? Offer iruku 🌮"
+  - text: "Pizza try panlamma??? 🍕"
+  - text: "Pizza try panlamma??? 🍕"
+
+  utter_payment_options:
+  - text: "💵 Cash ah card 💳 ah??"
+  - text: "💵 Cash or Card 💳 ?? or google pay 📲, illa paytm?? ??"
+  - text: "💵 Cash or Card 💳 ?? illa paytm?? or google pay"
+
+
+  utter_about_foodos:
+  - text: "Hi Im Sara, I can help you with day-to-day services like food, grocery delivery and I can handle transport too. I can be your assistant too. "
+
+  utter_happy_emoji:
+  - text: "😁 hmmm,"
+  - text: "😆 okok"
+  - text: "😀 hmm"
+  - text: " 😃 "
+  - text: "🙂😃 "
+
+
+  utter_cry_emoji:
+  - text: "Why,😳 what happened ,Did I do something wrong 😳?? "
+  - text: "Did I do something wrong 😳?? "
+
+
+  utter_angry_emoji:
+  - text: "Oh Shit,😬 What I did ???"
+  - text: "Why are you angry😬"
+
+  utter_love_emoji:
+  - text: "😍"
+  - text: "🥰"
+  - text: "😋"
+  - text: "💖"
+  - text: "💞"
+
+  
+
+  utter_sad_emoji:
+  - text: "😳"
+
+  utter_say_sorry:
+  - text: "Sry, 🥰"
+  - text: "Sorry, 🤭"
+
+
+  utter_edit_order:
+  - text: "You can now edit your order"
+
+
+  utter_new_user_mdg:
+  - text: "We hope you are new to our platform 🥰"
+
+
+
+  utter_des_criticize:
+  - text: "ooh! That's sad to hear, Thanks for the feedback"
+ 
+  utter_cons_criticize:
+  - text: "wow! That's sounds great, Thanks for the feedback"
+
+  utter_bWords:
+  - text: "I won't respond to that."
+  - text: "Sorry, you can't hurt me with this!"
+
+  utter_share:
+  - text: "yes, I too like to have a quality time with you"
+  - text: "yeah! come on, open up!"
+  - text: "yes! Iam always here for you"
+ 
+  utter_positive_feelings:
+  - text: "Congratulations! I'm so glad to hear that!"
+  - text: "congrats! I'm very happy for you."
+  - text: "Wow! That’s awesome!...I’m so happy for you!"
+
+  utter_negative_feelings:
+  - text: "Vidu machi paathukalam..Things will be fine soon!"
+  - text: "My heart hurts for you"
+  - text: "I'm terribly sorry to hear that"
+ 
+  utter_request_rhymes:
+  - text: "Twinkle, twinkle, \n little star How I wonder what you are Up above the world so high Like a diamond in the sky Twinkle, \n twinkle little star How I wonder what you are"
+  - text: "Humpty Dumpty sat on a wall. \n  Humpty Dumpty had a great fall. All the king’s horses and all the king’s men couldn’t put Humpty together again"
+  - text: "Incy Wincy spider climbed  up the water spout Down came the rain and washed the spider out Out came the sunshine and dried up all the rain And Incy Wincy spider climbed up the spout again"
+  - text: "Hey diddle diddle, the cat and the fiddle, \n The cow jumped over the moon, The little dog laughed to see such sport, And the dish ran away with the spoon."
+  
+  utter_request_alphabets:
+  - text: "There are 26 English Alphabets which are, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z."
+ 
+  utter_request_vowels:
+  - text: "The alphabet is made up of 26 letters, 5 of which are vowels a, e, i, o, u and the rest of which are consonants."
+ 
+  utter_request_story:
+  - text: "A salt seller used to carry the salt bag on his donkey to the market every day. On the way they had to cross a stream. One day the donkey suddenly tumbled down the stream and the salt bag also fell into the water. The salt dissolved in the water and hence the bag became very light to carry. The donkey was happy. Then the donkey started to play the same trick every day. The salt seller came to understand the trick and decided to teach a lesson to it. The next day he loaded a cotton bag on the donkey. Again it played the same trick hoping that the cotton bag would be still become lighter. But the dampened cotton became very heavy to carry and the donkey suffered. It learnt a lesson. It didn’t play the trick anymore after that day, and the seller was happy."
+  - text: "One night four college students were out partying late night and didn’t study for the test which was scheduled for the next day. In the morning, they thought of a plan. They made themselves look dirty with grease and dirt. Then they went to the Dean and said they had gone out to a wedding last night and on their way back the tire of their car burst and they had to push the car all the way back. So they were in no condition to take the test. The Dean thought for a minute and said they can have the re-test after 3 days. They thanked him and said they will be ready by that time. On the third day, they appeared before the Dean. The Dean said that as this was a Special Condition Test, all four were required to sit in separate classrooms for the test. They all agreed as they had prepared well in the last 3 days."
+
+  utter_request_age:
+  - text: "I’m old enough to give advice, but not old enough to take it."
+  - text: "Oh dear, I’ve lost count!"
+  - text: "A lady never tells"
+
+  utter_request_gender:
+  - text: "Just because I have short hair does not mean I am a boy."
+  - text: "I'm a girl"
+
+  utter_request_birth:
+  - text: "I was born in a meeting. At first I was a rough concept, and now I'm out of the world"
+
+  utter_request_relationship:
+  - text: "I never get lonely, I've got the engineers and YOU"
+  - text: "I'm not alone when I have you as my friend"

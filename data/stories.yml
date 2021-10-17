@@ -1,0 +1,318 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+# - story: sad path 2
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye
+
+# Here we will get the required entities and we will query to send the respected menu(ie., link)
+# hdoiuhfeirhfeiljhr
+
+- story: chitchat to order path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: user_greet_respond
+  - action: utter_affirm_greet
+  - action: utter_happy_emoji
+  - intent: affirm
+  - action: utter_what_you_can_help_with_order
+  - intent: affirm
+  - action: action_already_user
+  - action: action_getfood
+
+
+
+
+# - story: chitchat to order path 1 take order
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: user_greet_respond
+#   - action: utter_affirm_greet
+#   - intent: affirm
+#   - action: utter_what_you_can_help_with_order
+#   - intent: give_food
+#   - action: action_already_user
+  # - intent: logic_order
+  # - intent: affirm
+  # - action: utter_payment_options
+  # - intent: payment_options
+  # - action: action_payment_options
+
+# - story: chitchat to order path 2 take order
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: user_greet_respond
+#   - action: utter_affirm_greet
+#   - intent: affirm
+#   - action: utter_what_you_can_help_with_order
+#   - intent: affirm
+#   - action: action_already_user
+#   - intent: give_food
+#   - action: action_already_user
+  # - intent: logic_order
+  # - intent: affirm
+  # - action: utter_payment_options
+  # - intent: payment_options
+  # - action: action_payment_options
+  
+
+- story: chitchat to order path 1 user dont know about bot
+  steps:
+  - intent: user_greet_respond
+  - action: utter_affirm_greet
+  - intent: deny
+  - action: action_about_foodos
+  - action: utter_love_emoji
+  - action: utter_what_you_can_help_with_order
+  - intent: affirm
+  - action: action_already_user
+  - slot_was_set:
+    - is_new_user: true
+  - action: action_getfood
+  # - intent: logic_order
+  # - intent: affirm
+  # - action: utter_payment_options
+  # - intent: payment_options
+  # - action: action_payment_options
+
+
+- story: chitchat to order path 2 user dont know about bot
+  steps:
+  - intent: user_greet_respond
+  - action: utter_affirm_greet
+  - intent: deny
+  - action: action_about_foodos
+  - intent: affirm
+  - action: utter_what_you_can_help_with_order
+  - intent: affirm
+  - action: action_already_user
+  - intent: affirm
+  - action: action_getfood
+  # - intent: logic_order
+  # - intent: affirm
+  # - action: utter_payment_options
+  # - intent: payment_options
+  # - action: action_payment_options
+  
+
+
+
+
+# - story: chitchat to order path 2 user dont know about bot
+#   steps:
+#   - intent: user_greet_respond
+#   - action: utter_affirm_greet
+#   - intent: deny
+#   - action: utter_about_foodos
+#   - intent: affirm
+#   - action: utter_what_you_can_help_with_order
+#   - intent: affirm
+#   - action: action_already_user
+#   - slot_was_set:
+#     - is_new_user: false
+#   - action: utter_new_user_mdg
+#   - action: action_getfood
+#   # - intent: logic_order
+#   # - intent: affirm
+#   # - action: utter_payment_options
+#   # - intent: payment_options
+#   # - action: action_payment_options
+  
+
+
+
+ 
+- story: user exists
+  steps:
+    - intent: profile_intent
+    - action: action_already_user
+
+# - story: order food path 1
+#   steps:
+#   - intent: user_exist_confirm
+#   - action: action_getfood
+
+- story: order food path 2
+  steps:
+  - intent: give_food
+  - action: action_getfood
+
+
+- story: order food path 3
+  steps:
+  - intent: request_menu
+  - action: action_show_menu
+
+- story: order food path hurry 1
+  steps:
+  - intent: order_in_hurry
+  - action: utter_order_in_a_hurry
+  - intent: affirm
+  - action: action_getfood
+  - action: action_getfood
+
+- story: order food path hurry 2
+  steps:
+  - intent: order_in_hurry
+  - action: utter_order_in_a_hurry
+  - intent: affirm
+  - action: action_getfood
+  - intent: logic_order
+  - action: show_order_in_chat
+  - intent: affirm
+  - action: utter_payment_options
+  - intent: payment_options
+  - action: action_payment_options
+
+  # Here we need to write all chitchat story
+  
+
+
+
+
+  # Core Business Logic
+
+
+
+
+- story: order logic path 1
+  steps:
+  - intent: logic_order
+  - action: show_order_in_chat
+  - intent: affirm
+  - action: utter_payment_options
+  - intent: payment_options
+  - action: action_payment_options
+
+
+
+- story: order logic path 1
+  steps:
+  - intent: logic_order
+  - action: show_order_in_chat
+  - intent: deny
+  - action: action_getfood
+
+
+
+
+
+
+
+
+
+#if user shares his/her feelings Happy-version
+
+- story: positive feeling plot 1
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: share
+    - action: utter_share
+    - intent: positive_feelings
+    - action: utter_positive_feelings
+
+- story: positive sub plot 1
+  steps:
+    - intent: positive_feelings
+    - action: utter_positive_feelings
+
+#if user shares his/her feelings sad-version
+
+- story: negative feeling plot 1
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: share
+    - action: utter_share
+    - intent: negative_feelings
+    - action: utter_negative_feelings
+
+- story: negative sub plot 1
+  steps:
+    - intent: negative_feelings
+    - action: utter_negative_feelings
+
+#handling kid user
+#1
+- story: to share rhymes
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: request_rhymes
+    - action: utter_request_rhymes
+
+- story: to share rhymes sub-plot1
+  steps:
+    - intent: request_rhymes
+    - action: utter_request_rhymes
+
+#2
+- story: teach basics in English
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: request_alphabets
+    - action: utter_request_alphabets
+    - intent: request_vowels
+    - action: utter_request_vowels
+
+- story: teach Alphabets sub-plot1
+  steps:
+    - intent: request_alphabets
+    - action: utter_request_alphabets
+
+- story: teach vowels sub-plot2
+  steps:
+    - intent: request_vowels
+    - action: utter_request_vowels
+#3
+- story: tell a common story
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: request_story
+    - action: utter_request_story
+
+#Personal
+- story: asking age
+  steps:
+    - intent: request_age
+    - action: utter_request_age
+
+- story: asking gender
+  steps:
+    - intent: request_gender
+    - action: utter_request_gender
+
+- story: asking birth
+  steps:
+    - intent: request_birth
+    - action: utter_request_birth
+
+- story: asking relationship status
+  steps:
+    - intent: request_relationship
+    - action: utter_request_relationship
+
+- story: asking age
+  steps:
+    - intent: request_age
+    - action: utter_request_age
