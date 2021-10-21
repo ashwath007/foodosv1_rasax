@@ -11,7 +11,8 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.forms import FormAction
 from rasa_sdk.events import UserUttered, FollowupAction, BotUttered
 
-NODE_SERVER = "http://localhost:8000/rasaapi"
+# NODE_SERVER = "http://localhost:8000/rasaapi"
+NODE_SERVER = "https://foodosv1.herokuapp.com/rasaapi"
 
 
 # class ActionHelloWorld(Action):
@@ -45,7 +46,7 @@ class ActionGetFood(Action):
             # print(is_user['user_data']['profile_completed'] == True)
             if(is_user['is_exist'] == True):
                 # dispatcher.utter_message(text="Hi "+is_user['user_data']['name'])
-                dispatcher.utter_message(text=is_user['user_data']['name']+" you can order form here - "+" \n \n http://localhost:3000/menu/bot/:botId/need/menu/user/{}".format(is_user['user_data']['_id']))
+                dispatcher.utter_message(text=is_user['user_data']['name']+" you can order form here - "+" \n \n https://foodosv1.netlify.app/menu/bot/:botId/need/menu/user/{}".format(is_user['user_data']['_id']))
 
                 # print(is_user)
                 # print(is_user['user_data'])
@@ -158,7 +159,7 @@ class AlreadyaUser(Action):
             # print(is_user['user_data']['profile_completed'] == True)
             if(is_user['is_exist'] == True):
                 # dispatcher.utter_message(text="Hi "+is_user['user_data']['name'])
-                dispatcher.utter_message(text=is_user['user_data']['name']+" you can order form here - "+" \n \n http://localhost:3000/menu/bot/:botId/need/menu/user/{}".format(is_user['user_data']['_id']))
+                dispatcher.utter_message(text=is_user['user_data']['name']+" you can order form here - "+" \n \n https://foodosv1.netlify.app/menu/bot/:botId/need/menu/user/{}".format(is_user['user_data']['_id']))
 
                 # print(is_user)
                 # print(is_user['user_data'])

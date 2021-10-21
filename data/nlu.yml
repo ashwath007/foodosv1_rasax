@@ -194,6 +194,22 @@ nlu:
 
 - intent: user_say_name
   examples: |
+    - Babu(name)
+    - Jay(name)
+    - Jay Shankar(name)
+    - Babu(name)
+    - Vicky(name)
+    - my name is [babu](name)
+    - yen paru [babu](name)
+    - [babu](name)
+    - [babu](name) is my name
+    - [babu](name) s my name
+    - paru [babu](name)
+    - [Babu](name)
+    - [Babu](name) is my name
+    - [Babu](name) s my name
+    - paru [Babu](name)
+    - [vignesh](name) thann yen paruu
     - my name is [vignesh](name)
     - yen paru [vignesh](name)
     - [vignesh](name)
